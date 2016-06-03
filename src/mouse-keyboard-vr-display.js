@@ -169,7 +169,6 @@ MouseKeyboardVRDisplay.prototype.onMouseUp_ = function(e) {
 MouseKeyboardVRDisplay.prototype.requestPointerLock_ = function(element) {
   // from pointerlock controls in three.js
   // - https://github.com/mrdoob/three.js/blob/master/examples/misc_controls_pointerlock.html
-
   element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
   if ( /Firefox/i.test( navigator.userAgent ) ) {
     var fullscreenchange = function ( event ) {
