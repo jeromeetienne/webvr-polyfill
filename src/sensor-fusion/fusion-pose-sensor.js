@@ -128,7 +128,8 @@ FusionPoseSensor.prototype.onDeviceMotionChange_ = function(deviceMotion) {
   var accGravity = deviceMotion.accelerationIncludingGravity;
   var rotRate = deviceMotion.rotationRate;
   var timestampS = deviceMotion.timeStamp / 1000;
-
+console.log('onDeviceMotionChange_', deviceMotion);
+debugger;
   // Firefox Android timeStamp returns one thousandth of a millisecond.
   if (this.isFirefoxAndroid) {
     timestampS /= 1000;
@@ -158,6 +159,7 @@ FusionPoseSensor.prototype.onDeviceMotionChange_ = function(deviceMotion) {
 
 FusionPoseSensor.prototype.onScreenOrientationChange_ =
     function(screenOrientation) {
+console.log('onScreenOrientationChange_'); debugger;
   this.setScreenTransform_();
 };
 
