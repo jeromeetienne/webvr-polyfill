@@ -23,8 +23,8 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "controls-build": "browserify examples/sensor-fusion-controls/main.js  | derequire > examples/sensor-fusion-controls/build.js",
-    "controls-watch": "watchify examples/sensor-fusion-controls/main.js -v -d -o 'derequire > examples/sensor-fusion-controls/build.js'",
+    "controls-build": "browserify examples/sensor-fusion-controls/main.js  | derequire > build/sensor-fusion-controls.js",
+    "controls-watch": "watchify examples/sensor-fusion-controls/main.js -v -d -o 'derequire > build/sensor-fusion-controls.js'",
     "build": "browserify src/main.js | derequire > build/webvr-polyfill.js",
     "watch": "watchify src/main.js -v -d -o 'derequire > build/webvr-polyfill.js'",
     "copy": "cp build/webvr-polyfill.js ../webvr-boilerplate/node_modules/webvr-polyfill/build/webvr-polyfill.js"
