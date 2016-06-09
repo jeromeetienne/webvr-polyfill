@@ -128,9 +128,8 @@ MouseKeyboardVRDisplay.prototype.animateKeyTransitions_ = function(angleName, ta
 };
 
 MouseKeyboardVRDisplay.prototype.onMouseDown_ = function(e) {
-  var canvasElement = document.querySelector('canvas')
-  if( this.isPointerLocked_() === false && e.target === canvasElement){
-    this.requestPointerLock_(canvasElement)
+  if( this.isPointerLocked_() === false && e.target.nodeName === 'CANVAS'){
+    this.requestPointerLock_(document.body)
   }
   this.rotateStart_.set(e.clientX, e.clientY);
   this.isDragging_ = true;
