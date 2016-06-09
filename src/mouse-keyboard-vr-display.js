@@ -172,7 +172,7 @@ MouseKeyboardVRDisplay.prototype.requestPointerLock_ = function(element) {
   element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
   if ( /Firefox/i.test( navigator.userAgent ) ) {
     var fullscreenchange = function ( event ) {
-      if ( document.fullscreenElement === element || document.mozFullscreenElement === element || document.mozFullScreenElement === element ) {
+      if ( document.fullscreenElement === element || document.mozFullScreenElement === element ) {
         document.removeEventListener( 'fullscreenchange', fullscreenchange );
         document.removeEventListener( 'mozfullscreenchange', fullscreenchange );
         element.requestPointerLock();
