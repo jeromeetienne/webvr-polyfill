@@ -128,8 +128,8 @@ MouseKeyboardVRDisplay.prototype.animateKeyTransitions_ = function(angleName, ta
 };
 
 MouseKeyboardVRDisplay.prototype.onMouseDown_ = function(e) {
-  if( this.isPointerLocked_() === false && e.target.nodeName === 'CANVAS'){
-    this.requestPointerLock_(document.body)
+  if (this.isPointerLocked_() === false && e.target.nodeName.toLowerCase() === 'canvas') {
+    this.requestPointerLock_(document.body);
   }
   this.rotateStart_.set(e.clientX, e.clientY);
   this.isDragging_ = true;
@@ -166,20 +166,18 @@ MouseKeyboardVRDisplay.prototype.onMouseUp_ = function(e) {
 
 
 MouseKeyboardVRDisplay.prototype.requestPointerLock_ = function(element) {
-  // from pointerlock controls in three.js
+  // From pointerlock controls in three.js.
   // - https://github.com/mrdoob/three.js/blob/master/examples/misc_controls_pointerlock.html
   element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
-  if ( /Firefox/i.test( navigator.userAgent ) ) {
-    var fullscreenchange = function ( event ) {
-      if ( document.fullscreenElement === element || document.mozFullScreenElement === element ) {
-        document.removeEventListener( 'fullscreenchange', fullscreenchange );
-        document.removeEventListener( 'mozfullscreenchange', fullscreenchange );
+  if (/Firefox/i.test(navigator.userAgent)) {
+    var fullscreenchange = function(event) {
+      if (document.mozFullScreenElement === element) {
+        document.removeEventListener('mozfullscreenchange', fullscreenchange);
         element.requestPointerLock();
       }
     };
-    document.addEventListener( 'fullscreenchange', fullscreenchange, false );
-    document.addEventListener( 'mozfullscreenchange', fullscreenchange, false );
-    element.requestFullscreen = element.requestFullscreen || element.mozRequestFullscreen || element.mozRequestFullScreen || element.webkitRequestFullscreen;
+    document.addEventListener('mozfullscreenchange', fullscreenchange, false);
+    element.requestFullscreen = element.requestFullscreen || element.mozRequestFullScreen || element.webkitRequestFullscreen;
     element.requestFullscreen();
   } else {
     element.requestPointerLock();
